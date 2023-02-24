@@ -1,0 +1,177 @@
+{
+    "result": [
+        {
+            "id": "cdcf787e2582306edbc64ba6a3882748",
+            "zone_id": "e26de938e1a8e27a7673a77bdb1b6b22",
+            "zone_name": "dongdev.site",
+            "name": "api.dongdev.site",
+            "type": "A",
+            "content": "1.53.177.28",
+            "proxiable": true,
+            "proxied": true,
+            "ttl": 1,
+            "locked": false,
+            "meta": {
+                "auto_added": false,
+                "managed_by_apps": false,
+                "managed_by_argo_tunnel": false,
+                "source": "primary"
+            },
+            "comment": null,
+            "tags": [],
+            "created_on": "2023-02-16T14:01:39.443406Z",
+            "modified_on": "2023-02-18T01:14:52.808273Z"
+        },
+        {
+            "id": "9e74b405b214c474b0ce1dd56e2e35d5",
+            "zone_id": "e26de938e1a8e27a7673a77bdb1b6b22",
+            "zone_name": "dongdev.site",
+            "name": "cms.dongdev.site",
+            "type": "A",
+            "content": "1.53.177.28",
+            "proxiable": true,
+            "proxied": true,
+            "ttl": 1,
+            "locked": false,
+            "meta": {
+                "auto_added": false,
+                "managed_by_apps": false,
+                "managed_by_argo_tunnel": false,
+                "source": "primary"
+            },
+            "comment": null,
+            "tags": [],
+            "created_on": "2023-02-16T14:01:39.448445Z",
+            "modified_on": "2023-02-16T14:01:39.448445Z"
+        },
+        {
+            "id": "1c8a12d9743343f4b97ff1947c0528f5",
+            "zone_id": "e26de938e1a8e27a7673a77bdb1b6b22",
+            "zone_name": "dongdev.site",
+            "name": "dongdev.site",
+            "type": "A",
+            "content": "1.53.177.28",
+            "proxiable": true,
+            "proxied": true,
+            "ttl": 1,
+            "locked": false,
+            "meta": {
+                "auto_added": false,
+                "managed_by_apps": false,
+                "managed_by_argo_tunnel": false,
+                "source": "primary"
+            },
+            "comment": null,
+            "tags": [],
+            "created_on": "2023-02-16T14:01:39.438191Z",
+            "modified_on": "2023-02-16T14:01:39.438191Z"
+        },
+        {
+            "id": "280a922210d3c6175e49774424076ac2",
+            "zone_id": "e26de938e1a8e27a7673a77bdb1b6b22",
+            "zone_name": "dongdev.site",
+            "name": "dongdev.site",
+            "type": "MX",
+            "content": "route3.mx.cloudflare.net",
+            "priority": 99,
+            "proxiable": false,
+            "proxied": false,
+            "ttl": 1,
+            "locked": false,
+            "meta": {
+                "auto_added": false,
+                "email_routing": true,
+                "managed_by_apps": false,
+                "managed_by_argo_tunnel": false,
+                "read_only": true,
+                "source": "primary"
+            },
+            "comment": null,
+            "tags": [],
+            "created_on": "2023-02-21T02:15:18.126226Z",
+            "modified_on": "2023-02-21T02:15:18.126226Z"
+        },
+        {
+            "id": "18541373646f90862551c2c582d4ffd4",
+            "zone_id": "e26de938e1a8e27a7673a77bdb1b6b22",
+            "zone_name": "dongdev.site",
+            "name": "dongdev.site",
+            "type": "MX",
+            "content": "route2.mx.cloudflare.net",
+            "priority": 13,
+            "proxiable": false,
+            "proxied": false,
+            "ttl": 1,
+            "locked": false,
+            "meta": {
+                "auto_added": false,
+                "email_routing": true,
+                "managed_by_apps": false,
+                "managed_by_argo_tunnel": false,
+                "read_only": true,
+                "source": "primary"
+            },
+            "comment": null,
+            "tags": [],
+            "created_on": "2023-02-21T02:15:18.118138Z",
+            "modified_on": "2023-02-21T02:15:18.118138Z"
+        },
+        {
+            "id": "45f87819f69b60a552cfd9c5b12c8949",
+            "zone_id": "e26de938e1a8e27a7673a77bdb1b6b22",
+            "zone_name": "dongdev.site",
+            "name": "dongdev.site",
+            "type": "MX",
+            "content": "route1.mx.cloudflare.net",
+            "priority": 15,
+            "proxiable": false,
+            "proxied": false,
+            "ttl": 1,
+            "locked": false,
+            "meta": {
+                "auto_added": false,
+                "email_routing": true,
+                "managed_by_apps": false,
+                "managed_by_argo_tunnel": false,
+                "read_only": true,
+                "source": "primary"
+            },
+            "comment": null,
+            "tags": [],
+            "created_on": "2023-02-21T02:15:18.109076Z",
+            "modified_on": "2023-02-21T02:15:18.109076Z"
+        },
+        {
+            "id": "ea271ef506cc7b49721f7e386626ab1a",
+            "zone_id": "e26de938e1a8e27a7673a77bdb1b6b22",
+            "zone_name": "dongdev.site",
+            "name": "dongdev.site",
+            "type": "TXT",
+            "content": "v=spf1 include:_spf.mx.cloudflare.net ~all",
+            "proxiable": false,
+            "proxied": false,
+            "ttl": 1,
+            "locked": false,
+            "meta": {
+                "auto_added": false,
+                "managed_by_apps": false,
+                "managed_by_argo_tunnel": false,
+                "source": "primary"
+            },
+            "comment": null,
+            "tags": [],
+            "created_on": "2023-02-21T02:15:18.132993Z",
+            "modified_on": "2023-02-21T02:15:18.132993Z"
+        }
+    ],
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "result_info": {
+        "page": 1,
+        "per_page": 100,
+        "count": 7,
+        "total_count": 7,
+        "total_pages": 1
+    }
+}
