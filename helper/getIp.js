@@ -84,7 +84,7 @@ module.exports = {
         ]);
 
         // print all databases
-        console.log("databases", databases);
+        console.log("databases1", databases);
 
         if (getIPRes.status && getIPRes.status === 'success') {
             console.log("getIPRes", getIPRes);
