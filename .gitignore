@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .env
+.env.prod
 
 # testing
 /coverage
@@ -35,3 +36,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# logs file
+/logs/*

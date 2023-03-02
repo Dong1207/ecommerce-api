@@ -9,7 +9,7 @@ const {
 
 async function getIP() {
     try {
-        let getIPReq = await fetch(`http://ip-api.com/json/?fields=status,query`, {
+        let getIPReq = await fetch('http://ip-api.com/json/?fields=status,query', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ async function updateDNS(newIP) {
     // };
     const options = {
         method: 'GET',
-        headers: {'Content-Type': 'application/json', 'X-Auth-Email': CLOUDFLARE_EMAIL, 'X-Auth-Key': CLOUDFLARE_KEY}
+        headers: { 'Content-Type': 'application/json', 'X-Auth-Email': CLOUDFLARE_EMAIL, 'X-Auth-Key': CLOUDFLARE_KEY }
     };
 
 
