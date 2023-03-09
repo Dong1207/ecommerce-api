@@ -2,6 +2,8 @@ const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const { loggerMiddleware } = require('../middlewares/logger.middleware');
+const { handleErrors } = require('../middlewares/errors.middleware');
+const { Forbidden } = require('../libs/errors');
 const helmet = require("helmet");
 
 const {
@@ -24,7 +26,8 @@ function middlewareConfig(app) {
          if (whitelist.indexOf(origin) !== -1 || whitelist.indexOf("*") !== -1) {
             callback(null, true);
          } else {
-            callback(new Error('Not allowed by CORS'));
+            const corsError = new Forbidden('Domain not allowed!');
+            callback(corsError);
          }
       },
       credentials: true,
@@ -34,6 +37,9 @@ function middlewareConfig(app) {
    // Logger
    app.use(loggerMiddleware);
    // Error handle
+   setImmediate(() => {
+      app.use(handleErrors);
+   });
 }
 
 module.exports = middlewareConfig;

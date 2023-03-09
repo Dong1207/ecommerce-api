@@ -1,7 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-const { Request, Response } = require('express');
 const UserService = require('./user.service');
-
 class UserController {
    constructor() {
       this.userService = new UserService();
@@ -9,8 +6,8 @@ class UserController {
    }
 
    /**
-    * @param {Request} req 
-    * @param {Response} res 
+    * @param {import('express').Request} req 
+    * @param {import('express').Response} res 
     */
    async getUser(req, res) {
       try {
