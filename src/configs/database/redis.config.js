@@ -1,19 +1,20 @@
-const { Redis } = require('ioredis');
+const Redis = require('ioredis');
+const Logger = require('@/libs/common/logger.service');
 
 const redisURI = process.env.REDIS_URI;
-const redisClient = new Redis(redisURI);
+const redisClient = new Redis(redisURI, {});
 
 async function redisConnect() {
    redisClient.on('connect', () => {
-      console.log('redis connect')
+      Logger.log('Redis connected');
    });
 
    redisClient.once('ready', () => {
-      console.log('Redis ready!');
+      Logger.log('Redis ready!');
    });
 
    redisClient.once('error', (err) => {
-      console.log('Redis connecte error:', err);
+      Logger.log('Redis connecte error:', err);
    });
 }
 

@@ -1,5 +1,5 @@
 const UserRepository = require('./user.repository');
-const { BadRequest } = require('@/libs/errors');
+// const { BadRequest } = require('@/libs/errors');
 
 class UserService {
    constructor() {
@@ -8,7 +8,6 @@ class UserService {
 
    async getUser(userId) {
       this.userRepository.getUserByAnyField();
-      throw new BadRequest('nanannanan');
       return {
          userId,
          name: 'Trung Dong'

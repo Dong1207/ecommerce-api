@@ -39,38 +39,7 @@ class Logger {
          winston.format.label({ label }),
       ];
 
-      const transports = [new winston.transports.Console({
-         format: winston.format.combine(
-            ...baseFormat,
-            winston.format.printf((info) => {
-               let label = chalk['yellow'](logInfo['logTime']);
-
-               const logMethod = logInfo['logMethod'];
-               const logStatus = logInfo['logStatus'];
-               const logPath = logInfo['logPath'];
-               if (logMethod) {
-                  label += ` ${chalk['hex'](colorHttp[logMethod])(logMethod)}`;
-               }
-
-               if (logStatus) {
-                  let statusColor = colors.http;
-                  //Include 4 => error, example 400, 401,...
-                  if (logStatus && logStatus.includes('5')) {
-                     statusColor = colors.error;
-                  }
-                  label += ` ${chalk[statusColor](logStatus)}`;
-               }
-
-               if (logPath) {
-                  label += ` ${chalk['hex']('#0000FF')(logPath)}`;
-               }
-
-               return `${label} ${chalk[colors[info.level]](`[${info.level.toUpperCase()}]:`)} ` +
-                  `${chalk['whiteBright'](JSON.stringify(info.message))}`;
-            })
-         )
-      })];
-
+      const transports = [];
       if (process.env.NODE_ENV === AppKeys.ENV_MODE.PROD) {
          transports.push(new winston.transports.DailyRotateFile({
             dirname: path.resolve(global.rootDir, '..', 'logs'),
@@ -78,6 +47,38 @@ class Logger {
             datePattern: 'YYYY-MM-DD',
             maxSize: '20m',
             maxFiles: '14d',
+         }));
+      } else {
+         transports.push(new winston.transports.Console({
+            format: winston.format.combine(
+               ...baseFormat,
+               winston.format.printf((info) => {
+                  let label = chalk['yellow'](logInfo['logTime']);
+
+                  const logMethod = logInfo['logMethod'];
+                  const logStatus = logInfo['logStatus'];
+                  const logPath = logInfo['logPath'];
+                  if (logMethod) {
+                     label += ` ${chalk['hex'](colorHttp[logMethod])(logMethod)}`;
+                  }
+
+                  if (logStatus) {
+                     let statusColor = colors.http;
+                     //Include 4 => error, example 400, 401,...
+                     if (logStatus && logStatus.includes('5')) {
+                        statusColor = colors.error;
+                     }
+                     label += ` ${chalk[statusColor](logStatus)}`;
+                  }
+
+                  if (logPath) {
+                     label += ` ${chalk['hex']('#0000FF')(logPath)}`;
+                  }
+
+                  return `${label} ${chalk[colors[info.level]](`[${info.level.toUpperCase()}]:`)} ` +
+                     `${chalk['whiteBright'](JSON.stringify(info.message))}`;
+               })
+            )
          }));
       }
 
@@ -131,14 +132,9 @@ class Logger {
       });
    }
 
-   static log(data, color = 'whiteBright') {
-      if (typeof data === 'string') {
-         // eslint-disable-next-line no-console
-         console.log(chalk[color](data));
-      } else {
-         // eslint-disable-next-line no-console
-         console.log(chalk[color](JSON.stringify(data, null, 3)));
-      }
+   static log() {
+      // eslint-disable-next-line no-console
+      console.log(chalk['yellow'](`[${dayjs().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD hh:mm:ss')}]`), ...arguments);
    }
 }
 module.exports = Logger;

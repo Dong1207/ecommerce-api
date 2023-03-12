@@ -1,12 +1,13 @@
 const { redisConnect } = require('./redis.config');
 const mongoDBConnect = require('./mongodb.config');
+const Logger = require('@/libs/common/logger.service');
 
 async function databaseConfig() {
    try {
-      await mongoDBConnect();
-      await redisConnect();
+      mongoDBConnect();
+      redisConnect();
    } catch (error) {
-      console.log('Database config error::', error);
+      Logger.log('Database config error:', error);
    }
 }
 
