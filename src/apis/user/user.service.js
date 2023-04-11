@@ -1,4 +1,5 @@
 const UserRepository = require('./user.repository');
+const User = require('./user.model');
 // const { BadRequest } = require('@/libs/errors');
 
 class UserService {
@@ -12,6 +13,12 @@ class UserService {
          userId,
          name: 'Trung Dong'
       };
+   }
+
+   async createUser(user){
+      const newUser = new User(user);
+      const createdUser = await newUser.save();
+      return createdUser;
    }
 }
 
