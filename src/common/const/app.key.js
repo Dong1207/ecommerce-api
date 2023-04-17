@@ -15,7 +15,18 @@ class AppKeys {
          aliases: true,
       },
       timestamps: true,
-      versionKey: false,
+      versionKey: false
+   });
+
+   static ROLE_ENUM = Object.freeze({
+      moderator: 'moderator',
+      admin: 'admin',
+      user: 'user'
+   });
+
+   static TOKEN_TYPE = Object.freeze({
+      REFRESH_TOKEN: 'refreshToken',
+      ACCESS_TOKEN: 'accessToken'
    });
 }
 

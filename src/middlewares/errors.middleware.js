@@ -6,7 +6,7 @@ module.exports = {
     * @param {Error} err 
     * @param {import("express").Response} res 
     */
-   handleErrors: async (err, _, res) => {
+   handleErrors: async (err, _, res, next) => {
       if (err instanceof HttpException) {
          res.status(err.status).json({ status: err.status, message: err.message });
          return;

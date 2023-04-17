@@ -1,4 +1,4 @@
-const Redis = require('ioredis');
+const { Redis } = require('ioredis');
 const Logger = require('@/libs/common/logger.service');
 
 const redisURI = process.env.REDIS_URI;
