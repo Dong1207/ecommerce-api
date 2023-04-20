@@ -16,7 +16,7 @@ class JwtLib {
                break;
             case AppKeys.TOKEN_TYPE.REFRESH_TOKEN:
                token = jwt.sign(payload, REFRESH_TOKEN_SECRET, {
-                  expiresIn: REFRESH_TOKEN_EXPIRE_TIME,
+                  expiresIn: parseInt(REFRESH_TOKEN_EXPIRE_TIME),
                });
                break;
             default:
@@ -43,14 +43,14 @@ class JwtLib {
          }
       } catch (error) {
          if (error instanceof jwt.TokenExpiredError) {
-            return new ServerError('Token is Exprired!');
+            throw new ServerError('Token is Exprired!');
          }
 
          if (error instanceof jwt.JsonWebTokenError) {
-            return new ServerError(error.message);
+            throw new ServerError(error.message);
          }
 
-         return new ServerError('Unknow error!');
+         throw new ServerError('Unknow error!');
       }
       return payload;
    }

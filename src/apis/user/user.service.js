@@ -40,8 +40,8 @@ class UserService {
          throw new BadRequest('Email or password incorrect!');
       }
 
-      let refreshToken = await RedisLib.getUserSection(userId);
-      const userPayload = { email: email, roles };
+      const userPayload = { email: email, roles: authorities };
+      let refreshToken = await this.userRepository.getRefreshTokenAvalid(userId);
 
       if (!refreshToken) {
          refreshToken = JwtLib.signToken(AppKeys.TOKEN_TYPE.REFRESH_TOKEN, userPayload);
@@ -88,6 +88,55 @@ class UserService {
 
       return logoutResponseData;
    }
+   async getCurrentUser(email) {
+
+      const realUser = await User.findOne({ email: email }).populate({ path: 'roles', select: 'name' });
+      if (!realUser) {
+         throw new BadRequest('Access denied. Token invalid.');
+      }
+
+      const { roles, first_name, last_name } = realUser;
+      let authorities = this.userRepository.convertRoleName(roles);
+
+      const userInfo = {
+         email,
+         roles: authorities,
+         firstName: first_name,
+         lastName: last_name
+      };
+      const loginResponseData = {
+         user: userInfo
+      };
+      return loginResponseData;
+
+
+
+   }
+   async getAccessToken(email) {
+
+      const realUser = await User.findOne({ email: email }).populate({ path: 'roles', select: 'name' });
+      if (!realUser) {
+         throw new BadRequest('Access denied. Token invalid.');
+      }
+
+      const { id: userId, roles } = realUser;
+      let authorities = this.userRepository.convertRoleName(roles);
+
+      let serverRefreshToken = await RedisLib.getUserSection(userId);
+
+      // if (!serverRefreshToken || serverRefreshToken !== refreshToken) {
+      //    throw new BadRequest('Access denied. Token invalid.');
+      // }
+      const userPayload = { email: email, roles: authorities };
+      const accessToken = JwtLib.signToken(AppKeys.TOKEN_TYPE.ACCESS_TOKEN, userPayload);
+
+      const accessTokenResponseData = {
+         accessToken
+      };
+
+      return accessTokenResponseData;
+   }
+
 }
 
 module.exports = UserService;

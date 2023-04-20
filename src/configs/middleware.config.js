@@ -2,6 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const { loggerMiddleware } = require('../middlewares/logger.middleware');
+const { authMiddleware } = require('../middlewares/auth.middleware');
 const { handleErrors } = require('../middlewares/errors.middleware');
 const { Forbidden } = require('../libs/errors');
 const helmet = require("helmet");
@@ -36,6 +37,8 @@ function middlewareConfig(app) {
 
    // Logger
    app.use(loggerMiddleware);
+   // auth
+   app.use(authMiddleware);
    // Error handle
    setImmediate(() => {
       app.use(handleErrors);
